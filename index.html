@@ -53,7 +53,8 @@ h1 { font: 500 clamp(2.75rem, 7vw, 4.25rem)/1.05 Newsreader, Georgia, serif; let
 .sg { color: #d81f2a; font-weight: 500; }
 .contact { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 20px; }
 .contact a { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); font-size: .9375rem; text-decoration: none; overflow-wrap: anywhere; }
-.contact svg { flex: none; color: var(--olive); }
+.contact svg, .contact img { flex: none; width: 20px; height: 20px; }
+.contact svg { color: var(--olive); }
 .contact a:hover { color: var(--olive); text-decoration: underline; }
 .portrait { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 16px; }
 
@@ -203,7 +204,7 @@ a.thumb:hover { border-color: var(--olive); transform: translateY(-2px); }
     <div>
       <h1>Hi, I'm Ryan.</h1>
       <p class="lede">I build things from <span class="sg">Singapore</span>. I co-founded <a href="#ord">ORD+</a>, an app for Singaporean servicemen, founded <a href="#calspace">CalSpace</a>, a social wellness app, and teach financial literacy to low-income youths.</p>
-      <p class="contact"><a href="https://www.instagram.com/ryansamueljee/"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6"/></svg>@ryansamueljee</a><a href="https://www.linkedin.com/in/ryan-jee/"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>linkedin.com/in/ryan-jee</a><a href="mailto:ryansamueljee1@gmail.com"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>ryansamueljee1@gmail.com</a></p>
+      <p class="contact"><a href="https://www.instagram.com/ryansamueljee/"><img src="photos/icon-insta.png" alt="" width="20" height="20">@ryansamueljee</a><a href="https://www.linkedin.com/in/ryan-jee/"><img src="photos/icon-linkedin.png" alt="" width="20" height="20">linkedin.com/in/ryan-jee</a><a href="mailto:ryansamueljee1@gmail.com"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>ryansamueljee1@gmail.com</a></p>
     </div>
     <img class="portrait" src="photos/ryan.jpg" alt="Ryan Jee" width="800" height="800">
   </div>
