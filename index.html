@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ryan Jee</title>
+<meta name="description" content="Ryan Jee: co-founder of ORD+, founder of CalSpace and MoneyBuddy, director of the Youth Financial Analysis Competition.">
+<link rel="icon" href="photos/ord-logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root {
+  --bg: #fbfaf7;
+  --card: #fff;
+  --ink: #1f211c;
+  --muted: #666a5e;
+  --line: #e4e3da;
+  --olive: #56603f;
+  --olive-soft: #d8dcc8;
+  --gutter: clamp(16px, 5vw, 48px);
+  --page: 1000px;
+  /* lines the scroller's first card up with the page content on wide screens */
+  --edge: max(var(--gutter), calc((100vw - var(--page)) / 2 + var(--gutter)));
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1rem/1.55 Inter, system-ui, sans-serif; overflow-x: clip; }
+h1, h2, h3, p, ul { margin: 0; padding: 0; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--olive); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { color: var(--ink); }
+:focus-visible { outline: 2px solid var(--olive); outline-offset: 2px; }
+.wrap { max-width: var(--page); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* Top bar */
+.top { border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 18px; }
+.top .brand { font: 500 1.25rem/1 Newsreader, Georgia, serif; color: var(--ink); text-decoration: none; }
+.top nav { display: flex; gap: 20px; font-size: .9375rem; }
+.top nav a { color: var(--muted); text-decoration: none; }
+.top nav a:hover { color: var(--ink); }
+
+/* Intro */
+.intro { padding: clamp(40px, 7vw, 72px) 0 clamp(40px, 6vw, 64px); }
+.intro .wrap { display: grid; grid-template-columns: 1fr 300px; gap: clamp(28px, 7vw, 88px); align-items: center; }
+h1 { font: 500 clamp(2.75rem, 7vw, 4.25rem)/1.05 Newsreader, Georgia, serif; letter-spacing: -.015em; margin-bottom: 20px; }
+.lede { font-size: 1.1875rem; line-height: 1.6; max-width: 31em; }
+.lede a { color: var(--ink); font-weight: 500; text-decoration-color: var(--olive); text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
+.lede a:hover { color: var(--olive); }
+.contact { margin-top: 20px; }
+.contact a { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); font-size: .9375rem; text-decoration: none; overflow-wrap: anywhere; }
+.contact svg { flex: none; color: var(--olive); }
+.contact a:hover { color: var(--olive); text-decoration: underline; }
+.portrait { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 16px; }
+
+/* Section heads */
+.head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+h2 { font: 500 1.625rem/1.2 Newsreader, Georgia, serif; }
+.arrows { display: flex; gap: 8px; }
+.arrows[hidden] { display: none; }
+.arrows button {
+  width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%;
+  background: var(--card); color: var(--ink); font: inherit; cursor: pointer;
+}
+.arrows button:hover:not(:disabled) { border-color: var(--olive); color: var(--olive); }
+.arrows button:disabled { opacity: .35; cursor: default; }
+
+/* Scroller */
+.scroller {
+  display: flex; gap: 16px; align-items: flex-start;
+  overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 2px var(--edge) 16px;
+  scroll-padding-inline: var(--edge);
+  scrollbar-width: thin; scrollbar-color: var(--line) transparent;
+}
+.card {
+  flex: 0 0 min(400px, 86vw); min-width: 0; scroll-snap-align: start; scroll-margin-top: 24px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px;
+}
+.card-top { display: flex; gap: 12px; align-items: center; margin-bottom: 14px; }
+.card-top img { width: 44px; height: 44px; border-radius: 10px; flex: none; }
+h3 { font-size: 1.0625rem; font-weight: 600; line-height: 1.25; }
+h3 a { color: inherit; text-decoration: none; }
+h3 a:hover { color: var(--olive); text-decoration: underline; }
+.meta { font-size: .8125rem; color: var(--muted); }
+.meta a { color: inherit; text-decoration: underline; }
+.meta a:hover { color: var(--olive); }
+.card p.what { margin-bottom: 12px; }
+.card ul { font-size: .9375rem; color: #3b3e35; padding-left: 18px; }
+.card li { margin-bottom: 5px; }
+.card li::marker { color: var(--olive); }
+b { font-weight: 600; color: var(--ink); }
+
+/* See more */
+.js .body { height: 9.75rem; overflow: hidden; -webkit-mask-image: linear-gradient(#000 65%, transparent); mask-image: linear-gradient(#000 65%, transparent); }
+.js .body.open { height: auto; -webkit-mask-image: none; mask-image: none; }
+.more { display: none; margin: 6px 0 14px; padding: 2px 0; border: 0; background: none; font: inherit; font-size: .875rem; color: var(--olive); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.more:hover { color: var(--ink); }
+.js .more { display: inline-block; }
+
+/* Photo row */
+.thumbs { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 2px; margin: 0 -2px; }
+.thumb {
+  flex: 0 0 82px; height: 82px; padding: 3px; display: block;
+  background: var(--card); border: 1.5px solid var(--olive-soft); border-radius: 13px;
+  transition: border-color .15s ease, transform .15s ease;
+}
+a.thumb:hover { border-color: var(--olive); transform: translateY(-2px); }
+.thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 9px; }
+.thumb.wide { flex-basis: 122px; }
+.thumb.wide img { object-fit: contain; }
+
+/* Education */
+.education { padding-top: clamp(36px, 5vw, 56px); }
+.school {
+  display: flex; gap: 18px; align-items: flex-start; margin-top: 14px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px;
+}
+.school img { width: 48px; height: auto; flex: none; }
+.school-body { min-width: 0; flex: 1; }
+.subjects { font-size: .9375rem; color: #3b3e35; margin-top: 12px; }
+.sub-label { font-size: .9375rem; font-weight: 600; margin-top: 12px; margin-bottom: 4px; }
+.school ul { columns: 2; column-gap: 32px; padding-left: 18px; font-size: .9375rem; color: #3b3e35; }
+.school li { margin-bottom: 4px; break-inside: avoid; }
+.school li::marker { color: var(--olive); }
+
+/* Contact */
+.contact-section { padding-bottom: clamp(48px, 7vw, 72px); }
+.contact-section ul { list-style: none; margin-top: 8px; }
+.contact-section li { display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-top: 1px solid var(--line); }
+.contact-section li:last-child { border-bottom: 1px solid var(--line); }
+.contact-section span { color: var(--muted); font-size: .875rem; }
+.contact-section a { overflow-wrap: anywhere; text-align: right; }
+
+/* Press */
+.press { padding: clamp(36px, 5vw, 56px) 0; }
+.press ul { list-style: none; margin-top: 8px; }
+.press li { border-top: 1px solid var(--line); }
+.press li:last-child { border-bottom: 1px solid var(--line); }
+.press a { display: flex; align-items: center; gap: 16px; padding: 12px 0; color: var(--ink); text-decoration: none; }
+.press img { flex: none; width: 96px; height: 64px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); }
+.press .text { flex: 1; min-width: 0; display: flex; justify-content: space-between; align-items: center; gap: 4px 24px; }
+.press a:hover .title { color: var(--olive); text-decoration: underline; }
+.press .where { color: var(--muted); font-size: .875rem; white-space: nowrap; }
+
+@media (max-width: 720px) {
+  .intro .wrap { grid-template-columns: minmax(0, 1fr); }
+  .portrait { max-width: 260px; }
+  .top nav { gap: 12px; font-size: .875rem; }
+  .school ul { columns: 1; }
+  .press .text { flex-direction: column; align-items: flex-start; }
+  .press img { width: 72px; height: 54px; }
+  .press .where { white-space: normal; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .thumb { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap">
+    <a class="brand" href="#">Ryan Jee</a>
+    <nav aria-label="Sections">
+      <a href="#work">work</a>
+      <a href="#education">education</a>
+      <a href="#press">press</a>
+      <a href="#contact">contact</a>
+    </nav>
+  </div>
+</div>
+
+<header class="intro">
+  <div class="wrap">
+    <div>
+      <h1>Hi, I'm Ryan.</h1>
+      <p class="lede">I build things from Singapore. I co-founded <a href="#ord">ORD+</a>, an app for Singaporean servicemen, founded <a href="#calspace">CalSpace</a>, a social wellness app, and teach financial literacy to low-income youths.</p>
+      <p class="contact"><a href="mailto:ryansamueljee1@gmail.com"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>ryansamueljee1@gmail.com</a></p>
+    </div>
+    <img class="portrait" src="photos/ryan.jpg" alt="Ryan Jee" width="800" height="800">
+  </div>
+</header>
+
+<main>
+  <section aria-labelledby="work" style="scroll-margin-top:24px">
+    <div class="wrap head">
+      <h2 id="work">Work</h2>
+      <div class="arrows" hidden>
+        <button type="button" data-dir="-1" aria-label="Previous project">←</button>
+        <button type="button" data-dir="1" aria-label="Next project">→</button>
+      </div>
+    </div>
+
+    <div class="scroller" tabindex="0" role="region" aria-label="Work">
+
+      <article class="card" id="ord">
+        <div class="card-top">
+          <img src="photos/ord-logo.jpg" alt="" width="63" height="63">
+          <div><h3><a href="https://apps.apple.com/sg/app/ord/id6745117125">ORD+</a></h3><p class="meta">Co-Founder · Jan 2025 – Present</p></div>
+        </div>
+        <div class="body">
+          <p class="what">The first independently developed National Service app integrating into OneNS.</p>
+          <ul>
+            <li>Built the app to serve <b>5k+</b> National Servicemen</li>
+            <li>Working with Accenture on the Ministry of Defence OneNS integration (<b>300k+ users</b>)</li>
+            <li><b>S$3k</b> National Youth Council grant</li>
+            <li>Partnered with SAFRA</li>
+            <li>Hosted National Service workshops across Singapore community centres</li>
+          </ul>
+        </div>
+        <button class="more" type="button" aria-expanded="false">see more ▾</button>
+        <div class="thumbs">
+          <a class="thumb" href="https://www.safra.sg/nsman-magazine/Spotlight/Spotlight/2026/07/16/ORD-plus-founders-interview"><img src="photos/ord-interview.jpg" alt="Founders interview in NSman Magazine" loading="lazy"></a>
+          <a class="thumb" href="https://www.youtube.com/watch?v=g5rkTBxDzpo"><img src="photos/ord-rojak.jpg" alt="Ryan and Jonas talking about ORD+ on YouTube" loading="lazy" style="object-position:left"></a>
+          <a class="thumb" href="https://www.instagram.com/safrasg/reel/DZrtJXjjPUn/"><img src="photos/ord-founders.jpg" alt="SAFRA's Instagram post about ORD+" loading="lazy" style="object-position:top"></a>
+          <a class="thumb" href="https://open.spotify.com/episode/5NtyaSJt9RGA1vSPUbhrpU"><img src="photos/ord-podcast.jpg" alt="Reset with Lynlee podcast episode about ORD+" loading="lazy" style="object-position:left"></a>
+        </div>
+      </article>
+
+      <article class="card" id="calspace">
+        <div class="card-top">
+          <img src="photos/calspace-logo.jpg" alt="" width="62" height="62">
+          <div><h3><a href="https://apps.apple.com/us/app/calspace/id6762625662">CalSpace</a></h3><p class="meta">Founder · Dec 2025 – Present</p></div>
+        </div>
+        <div class="body">
+          <p class="what">A social wellness platform where people join Spaces to stay accountable and build healthier habits together.</p>
+          <ul>
+            <li>Launched the app; lead a <b>7-person team</b> across Singapore, Vietnam and the US</li>
+            <li>Design features and influencer partnerships</li>
+            <li>Led cancer charity runs</li>
+          </ul>
+        </div>
+        <button class="more" type="button" aria-expanded="false">see more ▾</button>
+        <div class="thumbs">
+          <a class="thumb" href="https://www.instagram.com/calspace.app/"><img src="photos/calspace-run.jpg" alt="CalSpace cancer-awareness run; opens CalSpace on Instagram" loading="lazy"></a>
+          <a class="thumb" href="https://www.instagram.com/calspace.app/"><img src="photos/calspace-team.jpg" alt="CalSpace team call; opens CalSpace on Instagram" loading="lazy"></a>
+          <a class="thumb wide" href="https://apps.apple.com/us/app/calspace/id6762625662"><img src="photos/calspace-app.jpg" alt="Three CalSpace app screens: a workout, a food log and a friends feed; opens the App Store" loading="lazy"></a>
+        </div>
+      </article>
+
+      <article class="card" id="moneybuddy">
+        <div class="card-top">
+          <img src="photos/moneybuddy-logo.jpg" alt="" width="72" height="72" style="border-radius:50%">
+          <div><h3>MoneyBuddy</h3><p class="meta">Founder · Year 11–12</p></div>
+        </div>
+        <div class="body">
+          <p class="what">A community initiative delivering fortnightly financial-literacy workshops for low-income youths.</p>
+          <ul>
+            <li>Designed and taught workshops to <b>300+ youths</b></li>
+            <li>Partnered with grassroots groups nationwide</li>
+            <li>Grew the team from <b>2 to 8</b></li>
+          </ul>
+        </div>
+        <button class="more" type="button" aria-expanded="false">see more ▾</button>
+        <div class="thumbs">
+          <a class="thumb" href="photos/moneybuddy-class.jpg"><img src="photos/moneybuddy-class.jpg" alt="A MoneyBuddy workshop" loading="lazy"></a>
+          <a class="thumb" href="photos/moneybuddy-room.jpg"><img src="photos/moneybuddy-room.jpg" alt="Students working in groups at a MoneyBuddy workshop" loading="lazy"></a>
+          <a class="thumb" href="photos/moneybuddy-team.jpg"><img src="photos/moneybuddy-team.jpg" alt="The MoneyBuddy team" loading="lazy"></a>
+        </div>
+      </article>
+
+      <article class="card" id="yfac">
+        <div class="card-top">
+          <img src="photos/yfac-logo.jpg" alt="" width="310" height="310">
+          <div><h3><a href="https://www.instagram.com/yfacomp/">Youth Financial Analysis Competition</a></h3><p class="meta">Director · Year 11 · <a href="https://www.instagram.com/yfacomp/">Instagram</a></p></div>
+        </div>
+        <div class="body">
+          <p class="what">An investment competition for <b>600 youths</b> from <b>15+ countries</b>.</p>
+          <ul>
+            <li>Awarded a <b>$3k</b> national grant</li>
+            <li>Pitched to sponsors</li>
+            <li>Wrote case briefs and recruited judges</li>
+          </ul>
+        </div>
+        <button class="more" type="button" aria-expanded="false">see more ▾</button>
+        <div class="thumbs">
+          <a class="thumb" href="https://www.instagram.com/yfacomp/"><img src="photos/yfac-poster.jpg" alt="Youth Financial Analysis Competition 2024 poster; opens the competition's Instagram" loading="lazy" style="object-position:top"></a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="education" id="education" aria-labelledby="education-title">
+    <div class="wrap">
+      <h2 id="education-title">Education</h2>
+      <div class="school">
+        <img src="photos/sji-logo.png" alt="" width="277" height="360">
+        <div class="school-body">
+          <h3>St. Joseph's Institution International</h3>
+          <p class="meta">IB Diploma · 2023 – 2024 · Year 11–12 · Grade: 44/45</p>
+          <p class="subjects"><b>Higher Level:</b> Maths (AA), Economics, Biology<br><b>Standard Level:</b> Chemistry, English L&amp;L, Chinese B</p>
+          <p class="sub-label">Activities and societies</p>
+          <ul>
+            <li>Sportsman of the Year nominee (2023)</li>
+            <li>Financial Literacy Club (Co-Founder)</li>
+            <li>Investing Club (Lead Organiser)</li>
+            <li>Sports Council</li>
+            <li>Aku Bisa (Volunteer)</li>
+            <li>Conservation Matters (Leader)</li>
+            <li>U19 Basketball (Varsity Captain)</li>
+            <li>Peer Mentoring (Volunteer)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="education" id="research" aria-labelledby="research-title">
+    <div class="wrap">
+      <h2 id="research-title">Research</h2>
+      <div class="school">
+        <div class="school-body">
+          <h3>The Artificial Intelligence Revolution: Gen Z’s Perceptions, Expectations, and Hopes about the Future of Labour Markets</h3>
+          <p class="meta">The Convergence Journal · Conditionally accepted</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="press" id="press" aria-labelledby="press-title">
+    <div class="wrap">
+      <h2 id="press-title">Press</h2>
+      <ul>
+        <li><a href="https://mothership.sg/2026/06/allan-wus-son-built-ns-app/"><img src="photos/ord-founders.jpg" alt="" loading="lazy"><span class="text"><span class="title">Featured by Mothership: App to help NSFs navigate Singapore military service</span><span class="where">Mothership</span></span></a></li>
+        <li><a href="https://www.youtube.com/watch?v=g5rkTBxDzpo"><img src="photos/ord-rojak.jpg" alt="" loading="lazy"><span class="text"><span class="title">Talk on ORD+</span><span class="where">Power98</span></span></a></li>
+        <li><a href="https://www.safra.sg/nsman-magazine/Spotlight/Spotlight/2026/07/16/ORD-plus-founders-interview"><img src="photos/ord-interview.jpg" alt="" loading="lazy"><span class="text"><span class="title">Meet The NSFs Who Turned Their NS Experience Into ORD+</span><span class="where">NSman Magazine</span></span></a></li>
+        <li><a href="https://www.safra.sg/nsman-magazine/Spotlight/Spotlight/2026/02/12/ord-plus-NS-experience-National-Service-NSmen"><img src="photos/ord-safra-article.jpg" alt="" loading="lazy" style="object-position:top"><span class="text"><span class="title">ORD+: Turning the NS Experience into a Platform for Growth</span><span class="where">NSman Magazine</span></span></a></li>
+        <li><a href="https://open.spotify.com/episode/5NtyaSJt9RGA1vSPUbhrpU"><img src="photos/ord-podcast.jpg" alt="" loading="lazy"><span class="text"><span class="title">Good Tech: Turning NS struggles into a smart, all-in-one go-to ORD+ app</span><span class="where">Reset with Lynlee</span></span></a></li>
+        <li><a href="https://www.instagram.com/safrasg/reel/DZrtJXjjPUn/"><img src="photos/ord-behind-story.jpg" alt="" loading="lazy" style="object-fit:contain;background:#ebe9e2"><span class="text"><span class="title">The App Every NSF Wished Existed — Until Two Built It</span><span class="where">SAFRA on Instagram</span></span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <h2 id="contact-title">Contact</h2>
+      <ul>
+        <li><span>Email</span><a href="mailto:ryansamueljee1@gmail.com">ryansamueljee1@gmail.com</a></li>
+        <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/ryan-jee/">linkedin.com/in/ryan-jee</a></li>
+        <li><span>Instagram</span><a href="https://www.instagram.com/ryansamueljee/">@ryansamueljee</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<script>
+const scroller = document.querySelector('.scroller');
+const arrows = document.querySelector('.arrows');
+const [prev, next] = arrows.querySelectorAll('button');
+const sync = () => {
+  const max = scroller.scrollWidth - scroller.clientWidth;
+  arrows.hidden = max < 8;
+  prev.disabled = scroller.scrollLeft < 8;
+  next.disabled = scroller.scrollLeft > max - 8;
+};
+arrows.addEventListener('click', e => {
+  const dir = e.target.closest('button')?.dataset.dir;
+  if (dir) scroller.scrollBy({ left: dir * (scroller.querySelector('.card').offsetWidth + 16), behavior: 'smooth' });
+});
+scroller.addEventListener('scroll', sync, { passive: true });
+addEventListener('resize', sync);
+sync();
+
+document.querySelectorAll('.more').forEach(btn => btn.addEventListener('click', () => {
+  const open = btn.previousElementSibling.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
+  btn.textContent = open ? 'see less ▴' : 'see more ▾';
+}));
+</script>
+</body>
+</html>
